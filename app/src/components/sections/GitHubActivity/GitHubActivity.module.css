@@ -1,0 +1,138 @@
+.githubActivity {
+    background: var(--color-bg-secondary);
+    padding: var(--space-16) 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    max-width: 850px;
+    padding: var(--space-8);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+            var(--color-accent-primary),
+            var(--color-accent-secondary),
+            var(--color-accent-primary));
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.card:hover {
+    border-color: var(--color-accent-primary);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+.cardTitle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.cardTitle svg {
+    color: var(--color-accent-primary);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-accent-primary);
+    background: var(--color-highlight-soft);
+    border-radius: var(--radius-full);
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    /* Fixed light panel in both themes; the chart's pale cells clash on dark */
+    background: #faf8f5;
+    padding: var(--space-4);
+}
+
+.graphImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.caption {
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-4);
+}
+
+.caption a {
+    color: var(--color-accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.caption a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: var(--space-6);
+    }
+
+    .cardHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cardTitle {
+        font-size: var(--text-lg);
+    }
+}

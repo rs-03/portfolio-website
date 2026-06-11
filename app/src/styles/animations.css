@@ -1,0 +1,230 @@
+/* ===========================================
+   ANIMATION CLASSES - Reusable animations
+   =========================================== */
+
+/* Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Fade In Up */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Fade In Down */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeInDown {
+    animation: fadeInDown 0.6s ease forwards;
+}
+
+/* Scale In */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.4s ease forwards;
+}
+
+/* Twinkle - for stars */
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Pulse Glow */
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px var(--color-accent-primary);
+    }
+
+    50% {
+        box-shadow: 0 0 20px var(--color-accent-primary), 0 0 30px var(--color-accent-secondary);
+    }
+}
+
+.animate-pulseGlow {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Float */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Rotate */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-rotate {
+    animation: rotate 20s linear infinite;
+}
+
+/* Sun Rays */
+@keyframes sunRays {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.animate-sunRays {
+    animation: sunRays 3s ease-in-out infinite;
+}
+
+/* Stagger animation delays */
+.delay-100 {
+    animation-delay: 100ms;
+}
+
+.delay-200 {
+    animation-delay: 200ms;
+}
+
+.delay-300 {
+    animation-delay: 300ms;
+}
+
+.delay-400 {
+    animation-delay: 400ms;
+}
+
+.delay-500 {
+    animation-delay: 500ms;
+}
+
+.delay-600 {
+    animation-delay: 600ms;
+}
+
+.delay-700 {
+    animation-delay: 700ms;
+}
+
+.delay-800 {
+    animation-delay: 800ms;
+}
+
+/* Animation play state */
+.animate-paused {
+    animation-play-state: paused;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+/* ===========================================
+   SCROLL-DRIVEN REVEALS (progressive enhancement)
+   Browsers without animation-timeline just show content normally.
+   =========================================== */
+
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        @keyframes scrollReveal {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            animation: scrollReveal both;
+            animation-timeline: view();
+            animation-range: entry 5% entry 40%;
+        }
+    }
+}

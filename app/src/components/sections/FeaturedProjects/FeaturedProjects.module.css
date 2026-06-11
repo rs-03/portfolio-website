@@ -1,0 +1,20 @@
+.featured {
+    background: var(--color-bg-primary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-10);
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.viewAll {
+    text-align: center;
+}

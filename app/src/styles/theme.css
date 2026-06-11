@@ -1,0 +1,107 @@
+/* ===========================================
+   THEME SYSTEM - Dark and Light modes
+   =========================================== */
+
+/* Light Theme - Sun, Nature, Greenery */
+[data-theme="light"] {
+    /* Primary Colors */
+    --color-bg-primary: #faf8f5;
+    --color-bg-secondary: #f0ebe3;
+    --color-bg-tertiary: #e8e2d9;
+    --color-bg-card: #ffffff;
+
+    /* Text Colors */
+    --color-text-primary: #1a1612;
+    --color-text-secondary: #4a453d;
+    --color-text-tertiary: #6b6560;
+    --color-text-muted: #8a857d;
+
+    /* Accent Colors - Warm earth tones */
+    --color-accent-primary: #2d5a27;
+    --color-accent-secondary: #4a7c43;
+    --color-accent-tertiary: #7ba374;
+
+    /* Highlight - Sun gold */
+    --color-highlight: #d4a647;
+    --color-highlight-soft: rgba(212, 166, 71, 0.15);
+
+    /* Status Colors */
+    --color-success: #2d5a27;
+    --color-warning: #c4841d;
+    --color-error: #b33a3a;
+
+    /* Border Colors */
+    --color-border: rgba(26, 22, 18, 0.1);
+    --color-border-strong: rgba(26, 22, 18, 0.2);
+
+    /* Shadows - Warm tint */
+    --shadow-color: 30 20% 20%;
+    --shadow-card: 0 2px 8px rgba(26, 22, 18, 0.08);
+    --shadow-card-hover: 0 8px 24px rgba(26, 22, 18, 0.12);
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(180deg,
+            #faf8f5 0%,
+            #f5f0e8 50%,
+            #e8f0e5 100%);
+    --gradient-accent: linear-gradient(135deg, #2d5a27 0%, #4a7c43 100%);
+
+    /* Special Effects */
+    --glow-accent: 0 0 20px rgba(45, 90, 39, 0.3);
+
+    /* Ambient page glows - morning sun + foliage */
+    --ambient-glow-1: rgba(212, 166, 71, 0.14);
+    --ambient-glow-2: rgba(122, 163, 116, 0.16);
+}
+
+/* Dark Theme - Moon, Stars, Night Sky */
+[data-theme="dark"] {
+    /* Primary Colors - Deep space */
+    --color-bg-primary: #0a0a14;
+    --color-bg-secondary: #12121f;
+    --color-bg-tertiary: #1a1a2e;
+    --color-bg-card: #16162a;
+
+    /* Text Colors */
+    --color-text-primary: #f0f0f5;
+    --color-text-secondary: #b8b8c8;
+    --color-text-tertiary: #8888a0;
+    --color-text-muted: #5a5a70;
+
+    /* Accent Colors - Cosmic purple/blue */
+    --color-accent-primary: #7c6aef;
+    --color-accent-secondary: #9d8df0;
+    --color-accent-tertiary: #bdb2f5;
+
+    /* Highlight - Moonlight silver */
+    --color-highlight: #c0c8e0;
+    --color-highlight-soft: rgba(192, 200, 224, 0.1);
+
+    /* Status Colors */
+    --color-success: #4ade80;
+    --color-warning: #fbbf24;
+    --color-error: #f87171;
+
+    /* Border Colors */
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-border-strong: rgba(255, 255, 255, 0.15);
+
+    /* Shadows - Cool tint */
+    --shadow-color: 250 50% 10%;
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-card-hover: 0 8px 24px rgba(124, 106, 239, 0.15);
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(180deg,
+            #0a0a14 0%,
+            #12121f 50%,
+            #1a1a2e 100%);
+    --gradient-accent: linear-gradient(135deg, #7c6aef 0%, #9d8df0 100%);
+
+    /* Special Effects */
+    --glow-accent: 0 0 30px rgba(124, 106, 239, 0.4);
+
+    /* Ambient page glows - nebula purple + deep blue */
+    --ambient-glow-1: rgba(124, 106, 239, 0.10);
+    --ambient-glow-2: rgba(45, 80, 160, 0.08);
+}

@@ -1,0 +1,22 @@
+/* ===========================================
+   GLOBALS.CSS - Main entry point
+   Imports all CSS modules in correct order
+   =========================================== */
+
+/* 1. Design Tokens (CSS Variables) */
+@import './tokens.css';
+
+/* 2. Theme Colors (Light/Dark) */
+@import './theme.css';
+
+/* 3. CSS Reset & Base Styles */
+@import './base.css';
+
+/* 4. Utility Classes */
+@import './utilities.css';
+
+/* 5. Animation Classes */
+@import './animations.css';
+
+/* 6. Component Styles */
+@import './components.css';

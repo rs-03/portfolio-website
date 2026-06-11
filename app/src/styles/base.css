@@ -1,0 +1,168 @@
+/* ===========================================
+   BASE STYLES - Reset and defaults
+   =========================================== */
+
+/* Fonts are self-hosted via next/font (layout.jsx) — no external font request */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    transition: background-color var(--transition-slow), color var(--transition-slow);
+    min-height: 100vh;
+}
+
+/* Ambient gradient glows behind all content */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 70% 45% at 15% -5%, var(--ambient-glow-1), transparent 70%),
+        radial-gradient(ellipse 55% 40% at 95% 105%, var(--ambient-glow-2), transparent 70%);
+    transition: background var(--transition-slow);
+}
+
+/* Subtle film grain over everything */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    pointer-events: none;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Links */
+a {
+    color: var(--color-accent-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-accent-secondary);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+}
+
+h1 {
+    font-size: var(--text-5xl);
+}
+
+h2 {
+    font-size: var(--text-4xl);
+}
+
+h3 {
+    font-size: var(--text-3xl);
+}
+
+h4 {
+    font-size: var(--text-2xl);
+}
+
+h5 {
+    font-size: var(--text-xl);
+}
+
+h6 {
+    font-size: var(--text-lg);
+}
+
+/* Paragraphs */
+p {
+    color: var(--color-text-secondary);
+    max-width: 65ch;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Lists */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Buttons */
+button {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Focus styles */
+:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+    background-color: var(--color-accent-primary);
+    color: white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-text-muted);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-tertiary);
+}

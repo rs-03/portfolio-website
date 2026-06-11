@@ -1,0 +1,73 @@
+.teaser {
+    background: var(--color-bg-secondary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+}
+
+.card:hover {
+    border-color: var(--color-accent-primary);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+}
+
+.icon {
+    font-size: var(--text-2xl);
+    line-height: 1;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.blurb {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    flex: 1;
+}
+
+.try {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-accent-primary);
+}
+
+.liveDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-success);
+    animation: teaserLivePulse 2s ease-out infinite;
+}
+
+@keyframes teaserLivePulse {
+    from {
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-success) 50%, transparent);
+    }
+
+    to {
+        box-shadow: 0 0 0 6px transparent;
+    }
+}

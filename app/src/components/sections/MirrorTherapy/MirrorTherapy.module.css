@@ -1,0 +1,179 @@
+.mirror {
+    position: relative;
+    background: var(--color-bg-secondary);
+}
+
+.lab {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+    gap: var(--space-6);
+    align-items: stretch;
+}
+
+/* ---- Camera stage ---- */
+.stage {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    background: #101022;
+    border: 1px solid var(--color-border);
+}
+
+.video,
+.overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+.stageIdle {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    text-align: center;
+    background:
+        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(140, 220, 255, 0.1), transparent 70%),
+        #101022;
+}
+
+.privacy {
+    color: rgba(240, 240, 245, 0.65);
+    font-size: var(--text-sm);
+    max-width: 380px;
+}
+
+.error {
+    color: #f87171;
+    font-size: var(--text-sm);
+    max-width: 380px;
+}
+
+.fpsBadge {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: #fff;
+    background: rgba(16, 16, 34, 0.7);
+    border: 1px solid rgba(124, 106, 239, 0.4);
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(4px);
+}
+
+.trackBadge {
+    position: absolute;
+    top: var(--space-4);
+    left: var(--space-4);
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: rgba(240, 240, 245, 0.7);
+    background: rgba(16, 16, 34, 0.7);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(4px);
+    transition: all var(--transition-fast);
+}
+
+.trackOn {
+    color: #8cdcff;
+    border-color: rgba(140, 220, 255, 0.5);
+}
+
+/* ---- Side panel ---- */
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-2xl);
+}
+
+.panelLabel {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.exerciseList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.exercise {
+    display: flex;
+    gap: var(--space-3);
+    align-items: baseline;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+.exerciseNumber {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-accent-primary);
+    flex-shrink: 0;
+}
+
+.science {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+}
+
+.scienceText {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.stopBtn {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: var(--space-2) var(--space-5);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+}
+
+.stopBtn:hover {
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+.disclaimer {
+    margin: var(--space-8) auto 0;
+    text-align: center;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    max-width: none;
+}
+
+@media (max-width: 768px) {
+    .lab {
+        grid-template-columns: 1fr;
+    }
+}

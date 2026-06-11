@@ -1,0 +1,366 @@
+.playground {
+    position: relative;
+    background: var(--color-bg-secondary);
+    overflow: hidden;
+}
+
+/* Lab layout */
+.lab {
+    display: grid;
+    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr) minmax(220px, 280px);
+    gap: var(--space-6);
+    align-items: stretch;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-2xl);
+}
+
+.panelLabel {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+/* ---- Draw panel ---- */
+.canvasWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    /* Always-dark "chalkboard" in both themes — white ink, like MNIST */
+    background: #101022;
+    border: 1px solid rgba(124, 106, 239, 0.25);
+}
+
+.drawCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.canvasHint {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(240, 240, 245, 0.4);
+    font-size: var(--text-sm);
+    pointer-events: none;
+}
+
+.clearBtn {
+    align-self: flex-start;
+    padding: var(--space-2) var(--space-5);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+}
+
+.clearBtn:not(:disabled):hover {
+    color: var(--color-accent-primary);
+    border-color: var(--color-accent-primary);
+}
+
+.clearBtn:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* ---- Network panel ---- */
+.networkPanel {
+    justify-content: center;
+}
+
+.network {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    flex: 1;
+}
+
+.layer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.layerLabel {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.inputPreview {
+    width: 84px;
+    height: 84px;
+    image-rendering: pixelated;
+    background: #101022;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.neuronGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 14px);
+    gap: 8px;
+}
+
+.neuronGridSmall {
+    grid-template-columns: repeat(2, 14px);
+}
+
+.neuron {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-accent-primary);
+    opacity: calc(0.12 + var(--a, 0) * 0.88);
+    transform: scale(calc(0.7 + var(--a, 0) * 0.45));
+    box-shadow: 0 0 calc(var(--a, 0) * 10px) var(--color-accent-primary);
+    transition: opacity 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.flow {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-width: 18px;
+    max-width: 64px;
+}
+
+.flow span {
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--color-accent-primary),
+            transparent);
+    background-size: 200% 100%;
+    opacity: 0.5;
+    animation: flowPulse 2.2s linear infinite;
+}
+
+.flow span:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.flow span:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+@keyframes flowPulse {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+}
+
+.outputColumn {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 6px;
+}
+
+.outputNode {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 50%;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-accent-primary) calc(var(--a, 0) * 60%), transparent);
+    transition: all 200ms ease;
+}
+
+.outputActive {
+    color: #fff;
+    border-color: var(--color-accent-primary);
+    box-shadow: var(--glow-accent);
+}
+
+/* ---- Prediction panel ---- */
+.verdict {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-4);
+}
+
+.verdictDigit {
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1;
+    min-width: 1.2ch;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.verdictConf {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+.bars {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.barRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.barDigit {
+    width: 1ch;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.barTrack {
+    flex: 1;
+    height: 8px;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.barFill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--color-text-muted);
+    opacity: 0.45;
+    transition: width 250ms ease, background 250ms ease, opacity 250ms ease;
+}
+
+.barTop {
+    background: var(--gradient-accent);
+    opacity: 1;
+}
+
+/* ---- Specs footer ---- */
+.specs {
+    margin-top: var(--space-8);
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    max-width: none;
+}
+
+.specDot {
+    margin: 0 var(--space-3);
+    color: var(--color-accent-primary);
+}
+
+/* ---- How it's built ---- */
+.howItsBuilt {
+    max-width: 720px;
+    margin: var(--space-6) auto 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-card);
+    overflow: hidden;
+}
+
+.howSummary {
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-accent-primary);
+    cursor: pointer;
+    user-select: none;
+    transition: background var(--transition-fast);
+}
+
+.howSummary:hover {
+    background: var(--color-bg-secondary);
+}
+
+.howBody {
+    padding: 0 var(--space-6) var(--space-5);
+}
+
+.howList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+.howList li {
+    padding-left: var(--space-5);
+    position: relative;
+}
+
+.howList li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-primary);
+}
+
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+    .lab {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .networkPanel {
+        grid-column: 1 / -1;
+        order: 3;
+    }
+}
+
+@media (max-width: 640px) {
+    .lab {
+        grid-template-columns: 1fr;
+    }
+
+    .networkPanel {
+        grid-column: auto;
+    }
+
+    .network {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-4);
+    }
+
+    .flow {
+        display: none;
+    }
+}
